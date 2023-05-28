@@ -1,0 +1,5 @@
+2023-05-20 19:42:42.746 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.atguigu.com.servicehosp]' package. Please check your configuration.
+2023-05-20 19:42:42.811 [restartedMain] WARN  org.apache.tomcat.util.modeler.Registry - The MBean registry cannot be disabled because it has already been initialised
+2023-05-20 19:42:46.453 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.atguigu.yygh.*.mapper]' package. Please check your configuration.
+2023-05-20 19:42:46.515 [restartedMain] WARN  org.apache.tomcat.util.modeler.Registry - The MBean registry cannot be disabled because it has already been initialised
+2023-05-20 19:43:08.526 [restartedMain] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.atguigu.yygh.*.mapper]' package. Please check your configuration.
