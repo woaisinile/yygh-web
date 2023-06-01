@@ -59,3 +59,56 @@
 2023-05-31 21:37:06.039 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：c7871901abcfff65cbbd92a777f3ca10
 2023-05-31 21:37:06.040 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data sign=c7871901abcfff65cbbd92a777f3ca10&hoscode=医院编号1&timestamp=1685540226037&
 2023-05-31 21:37:06.178 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 应答结果：result data {"code":200,"message":"成功","data":{"id":"6476158b5cc51e67f53a79c4","createTime":"2023-05-30 23:26:03","updateTime":"2023-05-30 23:26:03","isDeleted":0,"param":{},"hoscode":"医院编号1","hosname":"北京协和医院","hostype":"1","provinceCode":"110000","cityCode":"110100","districtCode":"110102","address":"大望路","logoData":"iVBORw0KGgoAAAA...NSUhEUg==","intro":"北京协和医院是集医疗、教学、科研于一体的大型三级甲等综合医院，是国家卫生计生委...目标而继续努力。","route":"东院区乘车路线：106、...更多乘车路线详见须知。","status":0,"bookingRule":{"cycle":1,"releaseTime":"08:30","stopTime":"11:30","quitDay":-1,"quitTime":"15:30","rule":["西院区预约号取号地点：西院区门诊楼一层大厅挂号窗口取号","东院区预约号取号地点：东院区老门诊楼一层大厅挂号窗口或新门诊楼各楼层挂号/收费窗口取号"]}},"ok":true}
+2023-05-31 22:03:46.112 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2023-05-31 22:03:46.119 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown initiated...
+2023-05-31 22:03:46.122 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown completed.
+2023-05-31 22:03:49.737 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Starting ManageApplication on ligendeMacBook-Air.local with PID 19592 (/Users/ligen/program/project/yygh-parent/hospital-manage/target/classes started by ligen in /Users/ligen/program/project/yygh-parent)
+2023-05-31 22:03:49.739 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - The following profiles are active: dev
+2023-05-31 22:03:49.769 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-31 22:03:49.769 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-31 22:03:50.447 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-31 22:03:50.595 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9998 (http)
+2023-05-31 22:03:50.601 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9998"]
+2023-05-31 22:03:50.601 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-05-31 22:03:50.602 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2023-05-31 22:03:50.652 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-05-31 22:03:50.652 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 883 ms
+2023-05-31 22:03:50.785 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Starting...
+2023-05-31 22:03:50.972 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Start completed.
+2023-05-31 22:03:51.454 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-05-31 22:03:51.524 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2023-05-31 22:03:51.729 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2023-05-31 22:03:51.739 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-05-31 22:03:51.770 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-05-31 22:03:51.798 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9998"]
+2023-05-31 22:03:51.833 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9998 (http) with context path ''
+2023-05-31 22:03:51.836 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Started ManageApplication in 2.553 seconds (JVM running for 2.974)
+2023-05-31 22:05:11.103 [http-nio-9998-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-31 22:05:11.103 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-05-31 22:05:11.110 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2023-05-31 22:05:11.213 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685541911211|签名秘钥1
+2023-05-31 22:05:11.213 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：31dc1bfcfa286065b641d2dcc27f003b
+2023-05-31 22:05:11.215 [http-nio-9998-exec-1] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=31dc1bfcfa286065b641d2dcc27f003b&page=1&hoscode=医院编号1&timestamp=1685541911211&
+2023-05-31 22:05:18.021 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685541918016|签名秘钥1
+2023-05-31 22:05:18.022 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：6a30cf457b6775073aa490479cc1f26a
+2023-05-31 22:05:18.028 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=6a30cf457b6775073aa490479cc1f26a&page=1&hoscode=医院编号1&timestamp=1685541918016&
+2023-05-31 22:05:56.221 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：44f162029abb45f9ff0a5f743da0650d|体检科|200050923|门诊部核酸检测门诊(东院)|医院编号1|门诊部核酸检测门诊(东院)|1685541956219|签名秘钥1
+2023-05-31 22:05:56.223 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：a3dc9c64e3ce267a0afb2ca957c6268d
+2023-05-31 22:05:56.226 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data bigcode=44f162029abb45f9ff0a5f743da0650d&bigname=体检科&intro=门诊部核酸检测门诊(东院)&sign=a3dc9c64e3ce267a0afb2ca957c6268d&hoscode=医院编号1&depname=门诊部核酸检测门诊(东院)&depcode=200050923&timestamp=1685541956219&
+2023-05-31 22:05:56.331 [http-nio-9998-exec-5] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 应答结果：result data {"code":200,"message":"成功","data":null,"ok":true}
+2023-05-31 22:05:58.001 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685541957997|签名秘钥1
+2023-05-31 22:05:58.001 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：aedc37ee69c1b0d9aa5c189ae0f2d706
+2023-05-31 22:05:58.006 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=aedc37ee69c1b0d9aa5c189ae0f2d706&page=1&hoscode=医院编号1&timestamp=1685541957997&
+2023-05-31 22:06:00.985 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685541960981|签名秘钥1
+2023-05-31 22:06:00.986 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：4efd852a63f0f2c2a4084844eede3735
+2023-05-31 22:06:00.989 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=4efd852a63f0f2c2a4084844eede3735&page=1&hoscode=医院编号1&timestamp=1685541960981&
+2023-05-31 22:14:10.081 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：44f162029abb45f9ff0a5f743da0650d|体检科|200050923|门诊部核酸检测门诊(东院)|医院编号1|门诊部核酸检测门诊(东院)|1685542450078|签名秘钥1
+2023-05-31 22:14:10.088 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：ecbc6840c6743b1adaf209ace65d25ce
+2023-05-31 22:14:10.090 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data bigcode=44f162029abb45f9ff0a5f743da0650d&bigname=体检科&intro=门诊部核酸检测门诊(东院)&sign=ecbc6840c6743b1adaf209ace65d25ce&hoscode=医院编号1&depname=门诊部核酸检测门诊(东院)&depcode=200050923&timestamp=1685542450078&
+2023-05-31 22:14:10.297 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 应答结果：result data {"code":200,"message":"成功","data":null,"ok":true}
+2023-05-31 22:14:11.880 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685542451878|签名秘钥1
+2023-05-31 22:14:11.881 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：d1b893b0273fc364e3a19bc9d1274b76
+2023-05-31 22:14:11.884 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=d1b893b0273fc364e3a19bc9d1274b76&page=1&hoscode=医院编号1&timestamp=1685542451878&
+2023-05-31 22:14:14.805 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：医院编号1|10|1|1685542454801|签名秘钥1
+2023-05-31 22:14:14.820 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：e295443faf3130b6a5ddedd114dc3a7b
+2023-05-31 22:14:14.821 [http-nio-9998-exec-3] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data limit=10&sign=e295443faf3130b6a5ddedd114dc3a7b&page=1&hoscode=医院编号1&timestamp=1685542454801&
