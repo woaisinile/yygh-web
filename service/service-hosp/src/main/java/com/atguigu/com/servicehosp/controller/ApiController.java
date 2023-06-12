@@ -10,6 +10,7 @@ import com.atguigu.com.servicehosp.service.DepartmentService;
 import com.atguigu.com.servicehosp.service.HospitalService;
 import com.atguigu.com.servicehosp.service.HospitalSetService;
 import com.atguigu.com.serviceutil.helper.HttpRequestHelper;
+import com.atguigu.com.serviceutil.utils.MD5;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,20 @@ public class ApiController {
     public Result saveHospital(HttpServletRequest request){
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        String hospSign = (String) paramMap.get("sign");
+        String hosCode = (String)  paramMap.get("hoscode");
+        String signKey = hospitalSetService.getSignKey(hosCode);
+
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        if (!hospSign.equals(signKeyMd5)){
+            throw  new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        String logoData = (String) paramMap.get("logoData");
+        logoData = logoData.replaceAll(" ", "+");
+        paramMap.put("logoData",logoData);
         hospitalService.save(paramMap);
         return Result.ok();
     }
