@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Map;
 
 @Service
@@ -23,7 +24,19 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void save(Map<String, Object> paramMap){
         Department department = JSONObject.parseObject(JSONObject.toJSONString(paramMap), Department.class);
-        departmentRepository.save(department);
+
+        Department departmentExist = departmentRepository.
+                getDepartmentByHoscodeAndDepcode(department.getHoscode(), department.getDepcode());
+        if (departmentExist != null) {
+            departmentExist.setUpdateTime(new Date());
+            departmentExist.setIsDeleted(0);
+            departmentRepository.save(departmentExist);
+        } else {
+            department.setUpdateTime(new Date());
+            department.setCreateTime(new Date());
+            department.setIsDeleted(0);
+            departmentRepository.save(department);
+        }
 
     }
 
