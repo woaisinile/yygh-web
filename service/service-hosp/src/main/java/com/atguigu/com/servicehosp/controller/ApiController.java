@@ -77,14 +77,6 @@ public class ApiController {
         return Result.ok();
     }
 
-//    @ApiOperation(value = "获取医院信息")
-//    @PostMapping("hospital/show")
-//    public Result  queryHospital(HttpServletRequest request){
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
-//        Hospital hospital = hospitalService.getByHosCode(paramMap.get("hoscode"));
-//        return Result.ok(hospital);
-//    }
-
     @ApiOperation(value = "上传科室")
     @PostMapping("saveDepartment")
     public Result saveDepartment(HttpServletRequest request){
