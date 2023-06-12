@@ -37,6 +37,23 @@ public class ApiController {
     @Autowired
     private HospitalSetService hospitalSetService;
 
+    @ApiOperation(value = "查询医院")
+    @PostMapping("hospital/show")
+    public Result getHospital(HttpServletRequest request){
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
+        //必须参数校验 略
+        String hoscode = (String)paramMap.get("hoscode");
+        if(StringUtils.isEmpty(hoscode)) {
+            throw new YyghException(ResultCodeEnum.PARAM_ERROR);
+        }
+        //签名校验
+        if(!HttpRequestHelper.isSignEquals(paramMap, hospitalSetService.getSignKey(hoscode))) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        return Result.ok(hospitalService.getByHoscode((String)paramMap.get("hoscode")));
+    }
+
     @ApiOperation(value = "上传医院")
     @PostMapping("saveHospital")
     public Result saveHospital(HttpServletRequest request){
@@ -60,13 +77,13 @@ public class ApiController {
         return Result.ok();
     }
 
-    @ApiOperation(value = "获取医院信息")
-    @PostMapping("hospital/show")
-    public Result  queryHospital(HttpServletRequest request){
-        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
-        Hospital hospital = hospitalService.getByHosCode(paramMap.get("hoscode"));
-        return Result.ok(hospital);
-    }
+//    @ApiOperation(value = "获取医院信息")
+//    @PostMapping("hospital/show")
+//    public Result  queryHospital(HttpServletRequest request){
+//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
+//        Hospital hospital = hospitalService.getByHosCode(paramMap.get("hoscode"));
+//        return Result.ok(hospital);
+//    }
 
     @ApiOperation(value = "上传科室")
     @PostMapping("saveDepartment")

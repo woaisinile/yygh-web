@@ -8,5 +8,5 @@ public interface HospitalService {
 
     public void save(Map<String, Object> paramMap);
 
-    Hospital getByHosCode(Object hoscode);
+    Object getByHoscode(String hoscode);
 }
