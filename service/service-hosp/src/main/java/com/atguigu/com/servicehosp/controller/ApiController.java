@@ -9,6 +9,7 @@ import com.atguigu.com.model.vo.hosp.DepartmentQueryVo;
 import com.atguigu.com.servicehosp.service.DepartmentService;
 import com.atguigu.com.servicehosp.service.HospitalService;
 import com.atguigu.com.servicehosp.service.HospitalSetService;
+import com.atguigu.com.servicehosp.service.ScheduleService;
 import com.atguigu.com.serviceutil.helper.HttpRequestHelper;
 import com.atguigu.com.serviceutil.utils.MD5;
 import io.swagger.annotations.Api;
@@ -37,6 +38,8 @@ public class ApiController {
     @Autowired
     private HospitalSetService hospitalSetService;
 
+    @Autowired
+    private ScheduleService scheduleService;
 
     @ApiOperation(value = "上传科室")
     @PostMapping("saveDepartment")
@@ -138,6 +141,25 @@ public class ApiController {
         }
 
         departmentService.remove(hoscode, depcode);
+        return Result.ok();
+    }
+
+
+    @ApiOperation(value = "上传排班")
+    @PostMapping("saveSchedule")
+    public Result saveSchedule(HttpServletRequest request){
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
+        //必须参数校验 略
+        String hoscode = (String)paramMap.get("hoscode");
+        if(StringUtils.isEmpty(hoscode)) {
+            throw new YyghException(ResultCodeEnum.PARAM_ERROR);
+        }
+        //签名校验
+        if(!HttpRequestHelper.isSignEquals(paramMap, hospitalSetService.getSignKey(hoscode))) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        scheduleService.save(paramMap);
         return Result.ok();
     }
 
