@@ -106,10 +106,39 @@ public class ApiController {
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 10 : Integer.parseInt((String)paramMap.get("limit"));
 
+        if(StringUtils.isEmpty(hoscode)) {
+            throw new YyghException(ResultCodeEnum.PARAM_ERROR);
+        }
+
+        if(!HttpRequestHelper.isSignEquals(paramMap, hospitalSetService.getSignKey(hoscode))) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
         DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
         departmentQueryVo.setHoscode(hoscode);
         departmentQueryVo.setDepcode(depcode);
         Page<Department> pageModel = departmentService.selectPage(page, limit, departmentQueryVo);
         return Result.ok(pageModel);
     }
+
+    @ApiOperation(value = "删除科室")
+    @PostMapping("department/remove")
+    public Result removeDepartment(HttpServletRequest request) {
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
+        //必须参数校验 略
+        String hoscode = (String)paramMap.get("hoscode");
+        //必填
+        String depcode = (String)paramMap.get("depcode");
+        if(StringUtils.isEmpty(hoscode)) {
+            throw new YyghException(ResultCodeEnum.PARAM_ERROR);
+        }
+        //签名校验
+        if(!HttpRequestHelper.isSignEquals(paramMap, hospitalSetService.getSignKey(hoscode))) {
+            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        departmentService.remove(hoscode, depcode);
+        return Result.ok();
+    }
+
 }

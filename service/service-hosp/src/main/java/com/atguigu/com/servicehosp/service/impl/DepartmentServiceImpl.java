@@ -59,4 +59,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         Page<Department> pages = departmentRepository.findAll(example, pageable);
         return pages;
     }
+
+    @Override
+    public void remove(String hoscode, String depcode) {
+        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+        if (null != department){
+            departmentRepository.deleteById(department.getId());
+        }
+    }
 }
