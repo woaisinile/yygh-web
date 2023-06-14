@@ -9,9 +9,11 @@ import com.atguigu.servicecmn.service.DictService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -63,6 +65,54 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Cacheable(value = "dict",keyGenerator = "keyGenerator")
+    @Override
+    public String getNameByParentDictCodeAndValue(String parentDictCode, String value) {
+        //如果value能唯一定位数据字典，parentDictCode可以传空，例如：省市区的value值能够唯一确定
+        if(StringUtils.isEmpty(parentDictCode)) {
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
+        } else {
+            Dict parentDict = this.getByDictsCode(parentDictCode);
+            if(null == parentDict) return "";
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", parentDict.getId())
+                    .eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
+        }
+        return "";
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        Dict codeDict = this.getByDictsCode(dictCode);
+        if(null == codeDict) return null;
+        return this.findChlidData(codeDict.getId());
+    }
+
+    private List<Dict> findChlidData(Long id) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("parent_id", id);
+        List<Dict> dictList = baseMapper.selectList(wrapper);
+        for (Dict dict:dictList){
+            Long dictId = dict.getId();
+            boolean isChild = this.isChildren(dictId);
+            dict.setHasChildren(isChild);
+        }
+        return dictList;
+    }
+
+    private Dict getByDictsCode(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code", dictCode);
+        Dict codeDict = baseMapper.selectOne(wrapper);
+        return codeDict;
     }
 
     //判断id下面是否有子节点
