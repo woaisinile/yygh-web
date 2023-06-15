@@ -12,4 +12,16 @@ public interface HospitalService {
     Hospital getByHosCode(Object hoscode);
 
     Object selectPage(Integer page, Integer limit, HospitalQueryVo hospitalQueryVo);
+
+    /**
+     * 更新上线状态
+     */
+    void updateStatus(String id, Integer status);
+
+    /**
+     * 医院详情
+     * @param id
+     * @return
+     */
+    Map<String, Object> show(String id);
 }
