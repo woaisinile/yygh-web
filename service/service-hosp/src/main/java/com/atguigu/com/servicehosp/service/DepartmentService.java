@@ -11,5 +11,4 @@ public interface DepartmentService {
 
     Page<Department> selectPage(Integer page, Integer limit, DepartmentQueryVo departmentQueryVo);
 
-    void remove(String hoscode, String depcode);
 }

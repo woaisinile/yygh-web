@@ -25,18 +25,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void save(Map<String, Object> paramMap){
         Department department = JSONObject.parseObject(JSONObject.toJSONString(paramMap), Department.class);
 
-        Department departmentExist = departmentRepository.
-                getDepartmentByHoscodeAndDepcode(department.getHoscode(), department.getDepcode());
-        if (departmentExist != null) {
-            departmentExist.setUpdateTime(new Date());
-            departmentExist.setIsDeleted(0);
-            departmentRepository.save(departmentExist);
-        } else {
-            department.setUpdateTime(new Date());
-            department.setCreateTime(new Date());
-            department.setIsDeleted(0);
             departmentRepository.save(department);
-        }
 
     }
 
@@ -60,11 +49,4 @@ public class DepartmentServiceImpl implements DepartmentService {
         return pages;
     }
 
-    @Override
-    public void remove(String hoscode, String depcode) {
-        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
-        if (null != department){
-            departmentRepository.deleteById(department.getId());
-        }
-    }
 }
