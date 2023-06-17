@@ -11,7 +11,6 @@ import com.atguigu.com.model.vo.hosp.ScheduleQueryVo;
 import com.atguigu.com.servicehosp.service.DepartmentService;
 import com.atguigu.com.servicehosp.service.HospitalService;
 import com.atguigu.com.servicehosp.service.HospitalSetService;
-import com.atguigu.com.servicehosp.service.ScheduleService;
 import com.atguigu.com.serviceutil.helper.HttpRequestHelper;
 import com.atguigu.com.serviceutil.utils.MD5;
 import io.swagger.annotations.Api;
